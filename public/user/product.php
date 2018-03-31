@@ -42,153 +42,99 @@
 </header>
 <br>
 <br>
+<?php 
+   if(isset($_GET['search']))
+   {
+     $search = $_GET['search'];
+       $link = mysqli_connect("localhost", "root", "", "test");
+      $sql = "SELECT isbn,bname,price,actual_price FROM products where isbn='$search' or bname like '%$search%'";
+echo ('<div class="main">
+<div class="shop_top">
+  <div class="container">');
+	  if ($res = mysqli_query($link, $sql)) {
+    if (mysqli_num_rows($res) > 0) {
+             while ($row = mysqli_fetch_array($res)) {
+				$price = $row['price'];
+				$bname = $row['bname'];
+				$actual_price = $row['actual_price'];
+			
+			echo ('<div class="col-md-3 shop_box"><a href="single.php">
+					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
+					<span class="new-box">
+						<span class="new-label">Buy</span>
+					</span>
+					
+					<div class="shop_desc">
+						<h3><a href="#">'.$bname.'</a></h3>
+						<p>Book details</p>
+						<span class="reducedfrom">Rs'.$actual_price.'</span>
+						<span class="actual">Rs '.$price.'</span><br>
+						<ul class="buttons">
+							<li class="cart"><a href="#">Add To Cart</a></li>
+							<li class="shop_btn"><a href="single.php">Read More</a></li>
+							<div class="clear"> </div>
+					    </ul>
+				    </div>
+				</a><br></div>
+				');
+            
+					 }
+					 echo ('</div>
+					 </div>
+				 </div>');
+       
+				 echo ('<label>
+				 Similar Products
+			 </label>');
+			 exit();
+			
+    }
+    else {
+       $isbn = "No matching records are found";
+    }
+  }
+
+
+}
+
+?>
      <div class="main">
       <div class="shop_top">
 		<div class="container">
+		
 			<div class="row shop_box-top">
-				<div class="col-md-3 shop_box"><a href="single.php">
+			<?php
+			$link = mysqli_connect("localhost", "root", "", "test");
+			$sql = "SELECT isbn,bname,price,actual_price FROM products";
+	  if ($res = mysqli_query($link, $sql)) {
+		  if (mysqli_num_rows($res) > 0) {
+				   while ($row = mysqli_fetch_array($res)) {
+					$price = $row['price'];
+					$bname = $row['bname'];
+					$actual_price = $row['actual_price'];
+				echo ('<div class="col-md-3 shop_box"><a href="single.php">
 					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
 					<span class="new-box">
 						<span class="new-label">Buy</span>
 					</span>
 					
 					<div class="shop_desc">
-						<h3><a href="#">Bookname</a></h3>
+						<h3><a href="#">'.$bname.'</a></h3>
 						<p>Book details</p>
-						<span class="reducedfrom">Rs 66.00</span>
-						<span class="actual">Rs 12.00</span><br>
+						<span class="reducedfrom">Rs'.$actual_price.'</span>
+						<span class="actual">Rs '.$price.'</span><br>
 						<ul class="buttons">
 							<li class="cart"><a href="#">Add To Cart</a></li>
 							<li class="shop_btn"><a href="single.php">Read More</a></li>
 							<div class="clear"> </div>
 					    </ul>
 				    </div>
-				</a></div>
-				<div class="col-md-3 shop_box"><a href="single.php">
-					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
-					<span class="new-box">
-						<span class="new-label">Buy</span>
-					</span>
-					
-					<div class="shop_desc">
-						<h3><a href="#">Bookname</a></h3>
-						<p>Book details</p>
-						<span class="reducedfrom">Rs 66.00</span>
-						<span class="actual">Rs 12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="single.php">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</a></div>
-				<div class="col-md-3 shop_box"><a href="single.php">
-					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
-					<span class="new-box">
-						<span class="new-label">Buy</span>
-					</span>
-					
-					<div class="shop_desc">
-						<h3><a href="#">Bookname</a></h3>
-						<p>Book details</p>
-						<span class="reducedfrom">Rs 66.00</span>
-						<span class="actual">Rs 12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="single.php">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</a></div>
-				<div class="col-md-3 shop_box"><a href="single.php">
-					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
-					<span class="new-box">
-						<span class="new-label">Buy</span>
-					</span>
-					
-					<div class="shop_desc">
-						<h3><a href="#">Bookname</a></h3>
-						<p>Book details</p>
-						<span class="reducedfrom">Rs 66.00</span>
-						<span class="actual">Rs 12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="single.php">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</a></div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 shop_box"><a href="single.php">
-					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
-					<span class="new-box">
-						<span class="new-label">Buy</span>
-					</span>
-					
-					<div class="shop_desc">
-						<h3><a href="#">Bookname</a></h3>
-						<p>Book details</p>
-						<span class="reducedfrom">Rs 66.00</span>
-						<span class="actual">Rs 12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="single.php">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</a></div>
-				<div class="col-md-3 shop_box"><a href="single.php">
-					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
-					<span class="new-box">
-						<span class="new-label">Buy</span>
-					</span>
-					
-					<div class="shop_desc">
-						<h3><a href="#">Bookname</a></h3>
-						<p>Book details</p>
-						<span class="reducedfrom">Rs 66.00</span>
-						<span class="actual">Rs 12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="single.php">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</a></div>
-				<div class="col-md-3 shop_box"><a href="single.php">
-					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
-					<span class="new-box">
-						<span class="new-label">Buy</span>
-					</span>
-					
-					<div class="shop_desc">
-						<h3><a href="#">Bookname</a></h3>
-						<p>Book details</p>
-						<span class="reducedfrom">Rs 66.00</span>
-						<span class="actual">Rs 12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="single.php">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</a></div>
-				<div class="col-md-3 shop_box"><a href="single.php">
-					<img src="img/images/5.jpg" class="img-responsive" alt=""/>
-					<span class="new-box">
-						<span class="new-label">Buy</span>
-					</span>
-					
-					<div class="shop_desc">
-						<h3><a href="#">Bookname</a></h3>
-						<p>Book details</p>
-						<span class="reducedfrom">Rs 66.00</span>
-						<span class="actual">Rs 12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="single.php">Read More</a></li>
-							<div class="clear"> </div>
+				</a><br></div>');
+				   }
+				}
+			}
+			?>
+				
 					    </ul>
 				    </div>
 				</a></div>

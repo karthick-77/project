@@ -1,5 +1,28 @@
 <?php
 include("header.php");
+echo "account";
+?>
+<?php 
+      $link = mysqli_connect("localhost", "root", "", "test");
+      $sql = "SELECT firstname,lastname,mobile,email,address,city FROM userreg where user_id='$login_session'";
+if ($res = mysqli_query($link, $sql)) {
+    if (mysqli_num_rows($res) > 0) {
+             while ($row = mysqli_fetch_array($res)) {
+            echo "<tr>";
+            $firstname = $row['firstname'];
+            $lastname = $row['lastname'];
+            $mobile = $row['mobile'];
+            $email = $row['email'];
+            $address = $row['address'];
+            $city = $row['city'];
+                     }
+       
+        
+    }
+    else {
+        echo "No matching records are found.";
+    }
+}
 ?>
 <html>
 <head>
@@ -10,6 +33,13 @@ include("header.php");
  <!-- Account-->
     <section class="bg-light" id="account">
       <div class="container">
+      <label> User Name : </label> <?php echo $login_session;?> <br>
+      <label> first Name : </label> <?php echo $firstname;?><br>
+      <label> last Name : </label> <?php echo $lastname;?><br>
+      <label> mobile : </label> <?php echo $mobile;?><br>
+      <label> Email : </label> <?php echo $email;?><br>
+      <label> Address : </label> <?php echo $address;?><br>
+      <label> city : </label> <?php echo $city;?><br>
         <!-- <div class="row">
           <div class="col-lg-12 text-center">
             <!-- <h2 class="section-heading text-uppercase">My Account</h2> -->

@@ -9,21 +9,62 @@ include ("header.php");
 #isbn{
 	width:300px;
 	padding:6px;
-	
-}
+	}
 </style>
   </head>
 
   <body>
   <br> 
   <section>
-	 <form class="" action="#">
+  	 <form class="" action="#" method="GET">
 	 <label>  </label>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-	 <input type="text" id="isbn" name="isbn" placeholder="Please enter 13 digit ISBN of the book">
-	 <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
-          </form>
+	 <input type="text" id="isbn" name="isbn" placeholder="Please enter 13 digit ISBN of the book" value="">
+	 <button type="submit" id="submitButton" class="btn btn-primary">Submit</button> <br>
+   <?php 
+   if(isset($_GET['isbn']))
+   {
+     $isbn = $_GET['isbn'];
+       $link = mysqli_connect("localhost", "root", "", "test");
+      $sql = "SELECT isbn,bname FROM products where isbn='$isbn'";
+if ($res = mysqli_query($link, $sql)) {
+    if (mysqli_num_rows($res) > 0) {
+             while ($row = mysqli_fetch_array($res)) {
+            
+            $isbn = $row['isbn'];
+            $bname = $row['bname'];
+            
+                     }
+       
+        
+    }
+    else {
+       $isbn = "No matching records are found";
+    }
+  }
+  if ($isbn != "No matching records are found")
+{
+echo strip_tags("<br><label> Selling Book Details </label><br>
+<label> Book ISBN : </label>".$isbn."<br>");
+echo ("<br>");
+echo strip_tags("<pre> <br><label> Book Name : </label></pre>".$bname) ;
+
+
+}
+else
+{
+  echo strip_tags("<br><label> Selling Book Details </label>");
+  echo("<br>");
+  echo strip_tags("<label> Book ISBN : </label>".$isbn);
+echo("<br>");
+echo(" Please enter valid ISBN");
+}
+}
+
+?>
+ </form>
 		 
-       <p>you are selling book is <output> </output> </p>
+        
+
 	</section>
     <!-- Services --
     <section id="services">

@@ -65,7 +65,7 @@ if($user_type == "u")
 header("location: ./public/user/home.php"); // Redirecting To Other Page
 } 
 else if ($user_type == "a"){
-	header("location: ./public/admin/index.html");
+	header("location: ./public/admin/home.php");
 
 }}
 

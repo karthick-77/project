@@ -63,21 +63,22 @@ include('../sessions.php');
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
-		 <form class="nav-item" action="product.php">
+		 <form class="nav-item" action="product.php" method="GET">
 		 <li class="nav-item">
             <input type="text" name="search" placeholder="Search using ISBN or Book name...">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+          
           </form>
 		  </li>
 		  		 <li class="nav-item">
           <ul class="nav pull-right">
             <li class=""></li>
-            <li class="dropdown">
+           <!-- <li class="dropdown">
               <a href ="" class="nav-link js-scroll-trigger" data-toggle="dropdown">Wipro </a>
               <ul class="dropdown-menu">
                 <li><a href="wase-books.php"> &nbsp; &nbsp;   WASE </a></li>
                 <li><a href="wista-books.php"> &nbsp; &nbsp;  WISTA</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
 		  </li>
           <!--  <li class="nav-item">

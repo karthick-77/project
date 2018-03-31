@@ -64,12 +64,12 @@ include ("../sessions.php");
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
 		  <li class="nav-item">
-		  <form class="nav-item" action="product.php">
+      <form class="nav-item" action="product.php" method="GET">
             <input type="text" name="search" placeholder="Search using ISBN or Book name..." >&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
 			&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
           </form>
 		  </li>		
-		  <li class="nav-item">
+		<!---  <li class="nav-item">
           <ul class="nav pull-right">
             <li class=""></li>
             <li class="dropdown">
@@ -80,7 +80,7 @@ include ("../sessions.php");
               </ul>
             </li>
           </ul>
-		  </li>
+		  </li>-->
 		  <!--<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#services">Wipro</a>
             </li>-->
